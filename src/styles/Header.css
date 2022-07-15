@@ -1,0 +1,31 @@
+.header {
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+}
+.leftHeader {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    gap: 2rem;
+    align-items: center;
+}
+.rightHeader{
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    gap: 1rem;
+    align-items: center;
+}
+.links {
+    text-decoration: none;
+    color: black;
+}
+.logoHeader {
+    width: 5rem;
+    
+}
+.character, .search {
+    width: 2rem;
+}
+

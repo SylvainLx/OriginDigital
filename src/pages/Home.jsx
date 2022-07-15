@@ -1,16 +1,5 @@
-import { useQuery, gql } from "@apollo/client";
-
-const GET_VIDEOS = gql`
-  query allVideos {
-    allVideos {
-      items {
-        id
-        name
-        description
-      }
-    }
-  }
-`;
+import { useQuery } from "@apollo/client";
+import { GET_VIDEOS } from "../GraphQL/Queries";
 
 function DisplayVideos() {
   const { loading, error, data } = useQuery(GET_VIDEOS);

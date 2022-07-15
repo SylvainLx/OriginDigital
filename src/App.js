@@ -1,11 +1,11 @@
-import Home from "./pages/Home";
+import Main from "./components/Main.jsx";
+import Header from "./components/Header.jsx";
 
 export default function App() {
   return (
     <div>
-      <h2>My first Apollo app 🚀</h2>
-      <br />
-      <Home />
+      <Header />
+      <Main />
     </div>
   );
 }
