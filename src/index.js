@@ -1,11 +1,31 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import "./styles/index.css";
+import { React } from "react";
+import * as ReactDOM from "react-dom/client";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  HttpLink,
+} from "@apollo/client";
+import { setContext } from "apollo-link-context";
 import App from "./App";
 
+const httpLink = new HttpLink({
+  uri: "https://staging-graphql-service.onrewind.tv/graphql",
+});
+
+const authLink = setContext(() => ({
+  headers: { "x-account-key": "SyT0uHf3I" },
+}));
+
+const client = new ApolloClient({
+  cache: new InMemoryCache(),
+  link: authLink.concat(httpLink),
+});
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
-  <React.StrictMode>
+  <ApolloProvider client={client}>
     <App />
-  </React.StrictMode>
+  </ApolloProvider>
 );

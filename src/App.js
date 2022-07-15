@@ -1,7 +1,11 @@
-import "./styles/App.css";
+import Home from "./pages/Home";
 
-function App() {
-  return <div className="App">bonjour</div>;
+export default function App() {
+  return (
+    <div>
+      <h2>My first Apollo app 🚀</h2>
+      <br />
+      <Home />
+    </div>
+  );
 }
-
-export default App;
