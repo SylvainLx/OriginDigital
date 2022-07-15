@@ -7,6 +7,7 @@ export const GET_VIDEOS = gql`
         id
         name
         description
+        after
       }
     }
   }
@@ -18,7 +19,7 @@ export const GET_FUNZONE_VIDEOS = gql`
       items {
         id
         name
-        description
+        poster
       }
     }
   }
@@ -30,7 +31,7 @@ export const GET_TESTIMONIALES_VIDEOS = gql`
       items {
         id
         name
-        description
+        poster
       }
     }
   }
