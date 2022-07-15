@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import { GET_FUNZONE_VIDEOS } from "../GraphQL/Queries";
 
+import "../styles/videoCard.css";
 import "../styles/Funzone.css";
 
 function DisplayFunzone() {
@@ -23,7 +24,7 @@ function DisplayFunzone() {
 
 export default function FunZone() {
   return (
-    <div>
+    <div className="funzone">
       <h2>FunZone</h2>
       <div className="cardContainer">
         {" "}

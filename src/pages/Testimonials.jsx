@@ -2,7 +2,8 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import { GET_TESTIMONIALES_VIDEOS } from "../GraphQL/Queries";
 
-import "../styles/Funzone.css";
+import "../styles/videoCard.css";
+import "../styles/Testimonials.css";
 
 function DisplayTestimonials() {
   const { loading, error, data } = useQuery(GET_TESTIMONIALES_VIDEOS);
@@ -22,7 +23,7 @@ function DisplayTestimonials() {
 }
 export default function Testimonials() {
   return (
-    <div>
+    <div className="testimonials">
       <h2>Testimonials</h2>
       <div className="cardContainer">
         {" "}

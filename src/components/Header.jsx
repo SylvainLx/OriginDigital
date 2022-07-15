@@ -1,8 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "../styles/Header.css";
-import logoHeader from "../assets/logoHeader.png";
-import character from "../assets/character.png";
+import logo from "../assets/logo.png";
 import search from "../assets/search.png";
 
 export default function Header() {
@@ -11,12 +10,12 @@ export default function Header() {
       <ul className="leftHeader">
         <li>
           <NavLink to="/">
-            <img src={logoHeader} alt="logo header" className="logoHeader" />
+            <img src={logo} alt="logo" className="logo" />
           </NavLink>
         </li>
         <li>
           <NavLink to="/funzone" className="links">
-            FUN ZONE
+            FUNZONE
           </NavLink>
         </li>
         <li>
@@ -26,10 +25,6 @@ export default function Header() {
         </li>
       </ul>
       <ul className="rightHeader">
-        <li>
-          {" "}
-          <img src={character} alt="character" className="character" />
-        </li>
         <li>
           {" "}
           <img src={search} alt="search" className="search" />

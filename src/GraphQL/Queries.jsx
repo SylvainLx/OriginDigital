@@ -6,7 +6,9 @@ export const GET_VIDEOS = gql`
       items {
         id
         name
-        description
+        poster
+      }
+      cursor {
         after
       }
     }
@@ -21,6 +23,9 @@ export const GET_FUNZONE_VIDEOS = gql`
         name
         poster
       }
+      cursor {
+        after
+      }
     }
   }
 `;
@@ -33,6 +38,19 @@ export const GET_TESTIMONIALES_VIDEOS = gql`
         name
         poster
       }
+      cursor {
+        after
+      }
+    }
+  }
+`;
+
+export const GET_VIDEO_BY_ID = gql`
+  query video {
+    video(id: $id) {
+      id
+      name
+      poster
     }
   }
 `;

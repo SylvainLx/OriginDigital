@@ -1,47 +1,56 @@
 import React from "react";
-import { useQuery } from "@apollo/client";
-import { GET_VIDEOS } from "../GraphQL/Queries";
+import { useQuery, gql } from "@apollo/client";
+import { GET_VIDEOS, GET_VIDEO_BY_ID } from "../GraphQL/Queries";
 import ReactPlayer from "react-player";
+import { useParams } from "react-router-dom";
 
-import Master from "../assets/master.m3u8";
-import Background from "../assets/OTT-Whitelabel-Background.png";
-import Video from "./Video";
+import "../styles/Video.css";
 
-import "../styles/videoCard.css";
-import "../styles/Home.css";
-import { Link } from "react-router-dom";
-function DisplayVideos() {
+function DisplayFunzone() {
   const { loading, error, data } = useQuery(GET_VIDEOS);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
   return data.allVideos.items.map((video) => (
-    <Link key={video.id} className="videoCard" to={`/video/${video.id}`}>
+    <div key={video.id} className="videoCard">
       <img
         src={video.poster}
         alt="posterFunzone"
         className="imgPlaceholder"
       ></img>
       <h3 className="titleCard">{video.name}</h3>
-    </Link>
+    </div>
   ));
 }
 
-export default function Home() {
+export default function Video() {
+  const { id } = useParams();
+  const GET_VIDEO_BY_ID = gql`
+    query video {
+      video(id: "${id}") {
+        id
+        name
+        poster
+      }
+    }
+  `;
+  console.log(GET_VIDEO_BY_ID);
+
   return (
-    <div className="home">
+    <div className="videoContainer">
+      {/* {id === video.id ? ( */}
       <ReactPlayer
         url="https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8"
         controls={true}
         width="100%"
         height="100%"
       />
-      <h2 className="title">ALL VIDEOS</h2>
+      {/* ) : null} */}
       <div className="cardContainer">
         {" "}
-        <DisplayVideos />
+        <DisplayFunzone />
+        <p className="showMore">SHOW MORE</p>
       </div>
-      <p className="showMore">SHOW MORE</p>
     </div>
   );
 }

@@ -1,0 +1,42 @@
+.cardContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+    margin: 1rem;
+}
+.videoCard{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.imgPlaceholder {
+    max-width: 80%;
+    height: auto;
+}
+.titleCard {
+    font-size: 1rem;
+    color: white;
+    text-decoration: none;
+}
+.showMore {
+    text-align: center;
+    color: white;
+}
+
+@media (min-width: 767.98px) {
+    .cardContainer {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .imgPlaceholder {
+        max-width: 100%;
+margin: 0rem 1rem;  }
+}
+
+@media screen and (min-width: 1199.98px) {
+    .cardContainer {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    .imgPlaceholder {
+        max-width: 100%;
+margin: 0rem 1rem;  }
+}
