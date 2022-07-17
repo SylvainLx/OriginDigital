@@ -1,29 +1,12 @@
 import React from "react";
-import { useQuery, gql } from "@apollo/client";
-import { GET_VIDEOS, GET_VIDEO_BY_ID } from "../GraphQL/Queries";
+import { gql } from "@apollo/client";
 import ReactPlayer from "react-player";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import DisplayFunzone from "../components/DisplayFunzone";
 
 import "../styles/Video.css";
 import Background from "../assets/OTT-Whitelabel-Background.png";
-
-function DisplayFunzone() {
-  const { loading, error, data } = useQuery(GET_VIDEOS);
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
-
-  return data.allVideos.items.map((video) => (
-    <Link key={video.id} className="videoCard" to={`/video/${video.id}`}>
-      <img
-        src={video.poster}
-        alt="posterFunzone"
-        className="imgPlaceholder"
-      ></img>
-      <h3 className="titleCard">{video.name}</h3>
-    </Link>
-  ));
-}
 
 export default function Video() {
   const { id } = useParams();
