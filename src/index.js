@@ -11,14 +11,14 @@ import {
 import { setContext } from "apollo-link-context";
 import App from "./App";
 
+const { REACT_APP_ACCOUNT_KEY_PASS } = process.env;
 const httpLink = new HttpLink({
-  uri: "https://staging-graphql-service.onrewind.tv/graphql",
+  uri: `${process.env.REACT_APP_ENDPOINT_URL}`,
 });
 
 const authLink = setContext(() => ({
-  headers: { "x-account-key": "SyT0uHf3I" },
+  headers: { "x-account-key": REACT_APP_ACCOUNT_KEY_PASS },
 }));
-
 const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: authLink.concat(httpLink),

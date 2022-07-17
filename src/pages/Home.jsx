@@ -2,14 +2,12 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import { GET_VIDEOS } from "../GraphQL/Queries";
 import ReactPlayer from "react-player";
-
-import Master from "../assets/master.m3u8";
-import Background from "../assets/OTT-Whitelabel-Background.png";
-import Video from "./Video";
+import { Link } from "react-router-dom";
 
 import "../styles/videoCard.css";
 import "../styles/Home.css";
-import { Link } from "react-router-dom";
+import Background from "../assets/OTT-Whitelabel-Background.png";
+
 function DisplayVideos() {
   const { loading, error, data } = useQuery(GET_VIDEOS);
   if (loading) return <p>Loading...</p>;
@@ -31,8 +29,9 @@ export default function Home() {
   return (
     <div className="home">
       <ReactPlayer
-        url="https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8"
+        url={`${process.env.LIVE_STREAM_URL}`}
         controls={true}
+        light={Background}
         width="100%"
         height="100%"
       />
@@ -41,7 +40,9 @@ export default function Home() {
         {" "}
         <DisplayVideos />
       </div>
-      <p className="showMore">SHOW MORE</p>
+      <Link className="showMore" to="/">
+        SHOW MORE
+      </Link>{" "}
     </div>
   );
 }

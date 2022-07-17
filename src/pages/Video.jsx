@@ -3,8 +3,10 @@ import { useQuery, gql } from "@apollo/client";
 import { GET_VIDEOS, GET_VIDEO_BY_ID } from "../GraphQL/Queries";
 import ReactPlayer from "react-player";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import "../styles/Video.css";
+import Background from "../assets/OTT-Whitelabel-Background.png";
 
 function DisplayFunzone() {
   const { loading, error, data } = useQuery(GET_VIDEOS);
@@ -12,14 +14,14 @@ function DisplayFunzone() {
   if (error) return <p>Error :(</p>;
 
   return data.allVideos.items.map((video) => (
-    <div key={video.id} className="videoCard">
+    <Link key={video.id} className="videoCard" to={`/video/${video.id}`}>
       <img
         src={video.poster}
         alt="posterFunzone"
         className="imgPlaceholder"
       ></img>
       <h3 className="titleCard">{video.name}</h3>
-    </div>
+    </Link>
   ));
 }
 
@@ -40,17 +42,21 @@ export default function Video() {
     <div className="videoContainer">
       {/* {id === video.id ? ( */}
       <ReactPlayer
-        url="https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8"
+        url={`${process.env.LIVE_STREAM_URL}`}
         controls={true}
+        light={Background}
         width="100%"
         height="100%"
       />
       {/* ) : null} */}
+      <h2 className="title">More Videos</h2>
       <div className="cardContainer">
         {" "}
         <DisplayFunzone />
-        <p className="showMore">SHOW MORE</p>
       </div>
+      <Link className="showMore" to="/">
+        SHOW MORE
+      </Link>{" "}
     </div>
   );
 }
