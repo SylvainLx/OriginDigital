@@ -42,7 +42,7 @@ export default function Video() {
     <div className="videoContainer">
       {/* {id === video.id ? ( */}
       <ReactPlayer
-        url={`${process.env.LIVE_STREAM_URL}`}
+        url={`${process.env.REACT_APP_LIVE_STREAM_URL}`}
         controls={true}
         light={Background}
         width="100%"
